@@ -31,10 +31,8 @@ def tokenize(text: str) -> Sequence[str] | None:
 
     cleaned = []
     for ch in text:
-        if ch.isalnum():
+        if ch.isalnum() or ch.isspace():
             cleaned.append(ch)
-        else:
-            cleaned.append(' ')
 
     cleaned_text = ''.join(cleaned)
 
@@ -84,7 +82,7 @@ def calculate_frequencies(tokens: Sequence[str]) -> dict[str, float] | None:
         dict[str, float] | None: Dictionary with frequencies.
         Returns None in case of incorrect input types.
     """
-    if not isinstance(tokens, (list, tuple)) or len(tokens) == 0:
+    if not isinstance(tokens, list):
         return None
 
     for t in tokens:
