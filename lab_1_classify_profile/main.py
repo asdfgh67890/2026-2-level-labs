@@ -4,6 +4,7 @@ Lab 1.
 Language detection
 """
 
+# pylint:disable=unused-argument
 from typing import Sequence
 
 FreqDictType = dict[str, float]
