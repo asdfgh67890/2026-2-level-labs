@@ -1,3 +1,12 @@
+"""
+Starts the language detection lab.
+"""
+
+from lab_1_classify_profile.main import (
+    create_language_profile,
+    detect_language_by_top_n,
+)
+
 def main() -> None:
     """
     Launches an implementation.
@@ -11,10 +20,7 @@ def main() -> None:
     with open("lab_1_classify_profile/assets/texts/en.txt", "r", encoding="utf-8") as file:
         en_text = file.read()
 
-    from lab_1_classify_profile.main import (
-        create_language_profile,
-        detect_language_by_top_n,
-    )
+
 
     en_profile = create_language_profile("english", en_text, stopwords)
     de_profile = create_language_profile("german", de_text, stopwords)
