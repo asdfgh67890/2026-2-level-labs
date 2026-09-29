@@ -328,7 +328,6 @@ def calculate_mse(predicted: Sequence[float], actual: Sequence[float]) -> float 
     return sum(diffs) / len(actual)
 
 
-
 def compare_profiles_by_mse(
     unknown_profile: ProfileType, profile_to_compare: ProfileType
 ) -> float | None:
@@ -378,7 +377,6 @@ def compare_profiles_by_mse(
     return calculate_mse(list_of_mse_unk, list_of_mse_sec)
 
 
-
 def detect_language_by_mse(
     unknown_profile: ProfileType, profile_1: ProfileType, profile_2: ProfileType
 ) -> str | None:
@@ -418,7 +416,6 @@ def detect_language_by_mse(
 
     return sorted_list[0]
 
-
 # Mark 10
 
 
@@ -453,7 +450,6 @@ def save_profile(profile: ProfileType, save_path: str) -> bool:
     return True
 
 
-
 def load_profile(path_to_file: str) -> ProfileType | None:
     """
     Loads a language profile.
@@ -480,7 +476,6 @@ def load_profile(path_to_file: str) -> ProfileType | None:
         return None
 
     return profile
-
 
 
 def collect_profiles(paths_to_profiles: Sequence[str]) -> Sequence[ProfileType] | None:
@@ -512,7 +507,6 @@ def collect_profiles(paths_to_profiles: Sequence[str]) -> Sequence[ProfileType] 
             return None
 
     return list_of_profs
-
 
 
 def detect_language_advanced(
