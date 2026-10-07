@@ -126,7 +126,7 @@ def who_loves_whom(who: str, whom: str) -> None:
 
 
 # Task 1:
-def calculate_sum() -> int:
+def calculate_sum(arg1: int, arg2: int, arg3: int) -> int:
     """
     Return sum of received numbers.
 
@@ -139,15 +139,16 @@ def calculate_sum() -> int:
         int: sum of received numbers
     """
     # student implementation goes here
+    return arg1 + arg2 + arg3
 
 
 # Function calls with expected result:
-# calculate_sum(1, 2, 3) -> 6
-# calculate_sum(1, -5, 0) -> 4
+print(calculate_sum(1, 2, 3))
+print(calculate_sum(1, -5, 0))
 
 
 # Task 2:
-def calculate_power() -> int:
+def calculate_power(number: int, power: int) -> int:
     """
     Raise the number to the required power.
 
@@ -159,16 +160,17 @@ def calculate_power() -> int:
         int: number in the required power
     """
     # student implementation goes here
+    return number ** power
 
 
 # Function calls with expected result:
-# calculate_power(2, 3) -> 8
-# calculate_power(7, 2) -> 49
-# calculate_power(1589329, 0) -> 1
+print(calculate_power(2, 3))         # -> 8
+print(calculate_power(7, 2))         # -> 49
+print(calculate_power(1589329, 0))   # -> 1
 
 
 # Task 3:
-def calculate_factorial() -> int:
+def calculate_factorial(number: int) -> int:
     """
     Calculate factorial of the received number.
 
@@ -179,16 +181,20 @@ def calculate_factorial() -> int:
         int: factorial of the received number
     """
     # student implementation goes here
+    result = 1
+    for i in range(2, number + 1):
+        result *= i
+    return result
 
 
 # Function calls with expected result:
-# calculate_factorial(3) -> 6
-# calculate_factorial(2) -> 2
-# calculate_factorial(0) -> 1
+print(calculate_factorial(3))   # -> 6
+print(calculate_factorial(2))   # -> 2
+print(calculate_factorial(0))   # -> 1
 
 
 # Task 4:
-def encode_message() -> list:
+def encode_message(message: str, encode_dict: dict) -> list:
     """
     Encode the message.
 
@@ -200,15 +206,19 @@ def encode_message() -> list:
         list: list of digits as an encoded message
     """
     # student implementation goes here
+    encoded = []
+    for char in message:
+        encoded.append(encode_dict[char])
+    return encoded
 
 
 # Function calls with expected result:
-# encode_message("hello", {"h": 1, "e": 2, "l": 3, "o": 4}) -> [1, 2, 3, 3, 4]
-# encode_message("abba", {"a": 1, "b": 2, "c": 3, "d": 4}) -> [1, 2, 2, 1]
+print(encode_message("hello", {"h": 1, "e": 2, "l": 3, "o": 4})) # -> [1, 2, 3, 3, 4]
+print(encode_message("abba", {"a": 1, "b": 2, "c": 3, "d": 4})) # -> [1, 2, 2, 1]
 
 
 # Task 5:
-def capitalize_string() -> str:
+def capitalize_string(input_string: str) -> str:
     """
     Return capitalized version of the string.
 
@@ -219,15 +229,16 @@ def capitalize_string() -> str:
         str: capitalized string
     """
     # student implementation goes here
+    return input_string.upper()
 
 
 # Function calls with expected result:
-# capitalize_string("I love programming on Python") -> I LOVE PROGRAMMING ON PYTHON
-# capitalize_string("Functions are amazing") -> FUNCTIONS ARE AMAZING
+print(capitalize_string("I love programming on Python")) # -> I LOVE PROGRAMMING ON PYTHON
+print(capitalize_string("Functions are amazing")) # -> FUNCTIONS ARE AMAZING
 
 
 # Task 6
-def is_allowed_to_drive() -> bool:
+def is_allowed_to_drive(personal_information: dict, threshold: int = 18) -> bool:
     """
     Check, whether it is allowed to drive.
     By default, 18 is the age when it is allowed to drive a car.
@@ -240,15 +251,16 @@ def is_allowed_to_drive() -> bool:
         bool: whether it is allowed to drive
     """
     # student implementation goes here
+    return personal_information["age"] >= threshold
 
 
 # Function calls with expected result:
-# is_allowed_to_drive({"name": "Kath", "eyes": "blue", "age": 20}, 21) -> False
-# is_allowed_to_drive({"name": "Dean", "height": 178, "age": 20}) -> True
+print(is_allowed_to_drive({"name": "Kath", "eyes": "blue", "age": 20}, 21)) # -> False
+print(is_allowed_to_drive({"name": "Dean", "height": 178, "age": 20})) # -> True
 
 
 # Task 7
-def get_fibonacci_sequence() -> list:
+def get_fibonacci_sequence(length: int) -> list:
     """
     Return Fibonacci sequence of the specified length.
 
@@ -259,15 +271,24 @@ def get_fibonacci_sequence() -> list:
         list: Fibonacci sequence
     """
     # student implementation goes here
+    if length <= 0:
+        return []
+    if length == 1:
+        return [1]
+
+    sequence = [1, 1]
+    for _ in range(2, length):
+        sequence.append(sequence[-1] + sequence[-2])
+    return sequence
 
 
 # Function calls with expected result:
-# get_fibonacci_sequence(7) -> [1, 1, 2, 3, 5, 8, 13]
-# get_fibonacci_sequence(2) -> [1, 1]
+print(get_fibonacci_sequence(7)) # -> [1, 1, 2, 3, 5, 8, 13]
+print(get_fibonacci_sequence(2)) # -> [1, 1]
 
 
 # Task 8
-def add_numbers() -> int:
+def add_numbers(*numbers: int) -> int:
     """
     Sum all the provided numbers.
 
@@ -278,15 +299,16 @@ def add_numbers() -> int:
         int: sum of the provided numbers
     """
     # student implementation goes here
+    return sum(numbers)
 
 
 # Function calls with expected result:
-# add_numbers(1, 2, 3) -> 6
-# add_numbers(5, 10, 15) -> 30
+print(add_numbers(1, 2, 3)) # -> 6
+print(add_numbers(5, 10, 15)) # -> 30
 
 
 # Task 9
-def print_student_info() -> None:
+def print_student_info(**info) -> None:
     """
     Print provided student information.
 
@@ -297,14 +319,16 @@ def print_student_info() -> None:
         none: function doesn't return anything
     """
     # student implementation goes here
+    for key, value in info.items():
+        print(f"{key}: {value}")
 
 
 # Function calls with expected result:
-# print_student_info(name="Alice", grade="A", age=20) -> None
+print_student_info(name="Alice", grade="A", age=20) # -> None
 
 
 # Task 10
-def process_data() -> dict:
+def process_data(*performance, **personal_info) -> dict:
     """
     Process personal information about student and its performance.
 
@@ -316,8 +340,9 @@ def process_data() -> dict:
         dict: dictionary in the form of {"performance": ..., "personal_info": ...}
     """
     # student implementation goes here
+    return {"performance": performance, "personal_info": personal_info}
 
 
 # Function calls with expected result
-# process_data(10, 8, 4, name="Alice", age=25)
+print(process_data(10, 8, 4, name="Alice", age=25))
 # -> {"performance": (10, 8, 4), "personal_info": {"name": "Alice", "age": 25}}
