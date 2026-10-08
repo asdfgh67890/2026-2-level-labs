@@ -59,13 +59,11 @@ def add_numbers(a: int, b: int) -> int:
         int: Sum of a and b
     """
     # student implementation goes here
-    c = a + b
-    return c
 
 
-print(add_numbers(2, 3))
-print(add_numbers(-5, 10))
-print(add_numbers(0, 0))
+# add_numbers(2, 3) → 5
+# add_numbers(-5, 10) → 5
+# add_numbers(0, 0) → 0
 
 
 # Task 2:
@@ -82,13 +80,11 @@ def average(a: float, b: float, c: float) -> float:
         float: Average value of the three numbers
     """
     # student implementation goes here
-    d = (a+b+c)/3
-    return d
 
 
-print(average(1, 2, 3))
-print(average(10, 20, 30))
-print(average(5.5, 6.5, 7.5))
+# average(1, 2, 3) → 2.0
+# average(10, 20, 30) → 20.0
+# average(5.5, 6.5, 7.5) → 6.5
 
 
 # Task 3:
@@ -103,13 +99,12 @@ def is_even(n: int) -> bool:
         bool: True if n is even, False otherwise
     """
     # student implementation goes here
-    return (n % 2 == 0)
 
 
-print(is_even(2))
-print(is_even(3))
-print(is_even(0))
-print(is_even(-4))
+# is_even(2) → True
+# is_even(3) → False
+# is_even(0) → True
+# is_even(-4) → True
 
 
 # Task 4:
@@ -124,12 +119,11 @@ def area_of_circle(radius: float) -> float:
         float: Area of the circle
     """
     # student implementation goes here
-    return 3.14 * radius**2
 
 
-print(area_of_circle(1))
-print(area_of_circle(0))
-print(area_of_circle(2.5))
+# area_of_circle(1) → 3.14159...
+# area_of_circle(0) → 0
+# area_of_circle(2.5) → ~19.63495
 
 
 # Task 5:
@@ -144,14 +138,11 @@ def factorial(n: int) -> int:
         int: Factorial of n
     """
     # student implementation goes here
-    if n == 0:
-        return 1
-    return n * factorial(n - 1)
 
 
-print(factorial(0))
-print(factorial(1))
-print(factorial(5))
+# factorial(0) → 1
+# factorial(1) → 1
+# factorial(5) → 120
 
 
 # Task 6:
@@ -167,12 +158,11 @@ def power(a: float, b: int) -> float:
         float: Result of a raised to the power of b
     """
     # student implementation goes here
-    return a**b
 
 
-print(power(2, 3))
-print(power(5, 0))
-print(power(2, -2))
+# power(2, 3) → 8
+# power(5, 0) → 1
+# power(2, -2) → 0.25
 
 
 # Task 7:
@@ -191,12 +181,11 @@ def distance(x1: float, y1: float, x2: float, y2: float) -> float:
         float: Euclidean distance between the two points
     """
     # student implementation goes here
-    return float(((x2 - x1)**2 + (y2 - y1)**2) ** 0.5)
 
 
-print(distance(0, 0, 3, 4))
-print(distance(1, 2, 1, 2))
-print(distance(-1, -1, 2, 3))
+# distance(0, 0, 3, 4) → 5.0
+# distance(1, 2, 1, 2) → 0.0
+# distance(-1, -1, 2, 3) → 5.0
 
 
 # Task 8 (advanced):
@@ -211,20 +200,12 @@ def fibonacci(n: int) -> int:
         int: n-th Fibonacci number
     """
     # student implementation goes here
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    a, b = 0, 1
-    for i in range(2, n + 1):
-        a, b = b, a + b
-    return b
 
 
-print(fibonacci(0))
-print(fibonacci(1))
-print(fibonacci(5))
-print(fibonacci(7))
+# fibonacci(0) → 0
+# fibonacci(1) → 1
+# fibonacci(5) → 5
+# fibonacci(7) → 13
 
 
 # Task 9 (advanced):
@@ -239,12 +220,8 @@ def is_prime(n: int) -> bool:
         bool: True if n is prime, False otherwise
     """
     # student implementation goes here
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
 
 
-print(is_prime(2))
-print(is_prime(15))
-print(is_prime(17))
+# is_prime(2) → True
+# is_prime(15) → False
+# is_prime(17) → True

@@ -106,14 +106,12 @@ def multiply_string(input_string: str, how_many: int) -> str:
         str: Repeated string
     """
     # student implementation goes here
-    result = input_string * how_many
-    return result
 
 
-print(multiply_string('Hi', 2))
-print(multiply_string('Hi', 3))
-print(multiply_string('Hi', 1))
-print(multiply_string('Hi', 0))
+# multiply_string('Hi', 2) → 'HiHi'
+# multiply_string('Hi', 3) → 'HiHiHi'
+# multiply_string('Hi', 1) → 'Hi'
+# multiply_string('Hi', 0) → ''
 
 
 # Task 2:
@@ -129,16 +127,14 @@ def front_times(input_string: str, how_many: int) -> str:
         str: Repeated substring
     """
     # student implementation goes here
-    result = input_string[:3] * how_many
-    return result
 
 
-print(front_times('Chocolate', 2))
-print(front_times('Chocolate', 3))
-print(front_times('Abc', 3))
-print(front_times('A', 4))
-print(front_times('', 4))
-print(front_times('Abc', 0))
+# front_times('Chocolate', 2) → 'ChoCho'
+# front_times('Chocolate', 3) → 'ChoChoCho'
+# front_times('Abc', 3) → 'AbcAbcAbc'
+# front_times('A', 4) → 'AAAA'
+# front_times('', 4) → ''
+# front_times('Abc', 0) → ''
 
 
 # Task 3:
@@ -153,14 +149,12 @@ def extra_end(input_string: str) -> str:
         str: Resulting string
     """
     # student implementation goes here
-    result = input_string[-2:] * 3
-    return result
 
 
-print(extra_end('Hello'))
-print(extra_end('ab'))
-print(extra_end('Hi'))
-print(extra_end('Code'))
+# extra_end('Hello') → 'lololo'
+# extra_end('ab') → 'ababab'
+# extra_end('Hi') → 'HiHiHi'
+# extra_end('Code') → 'dedede'
 
 
 # Task 4:
@@ -176,14 +170,12 @@ def make_abba(first_string: str, second_string: str) -> str:
         str: Concatenated result
     """
     # student implementation goes here
-    result = first_string + second_string * 2 + first_string
-    return result
 
 
-print(make_abba('Hi', 'Bye'))
-print(make_abba('Yo', 'Alice'))
-print(make_abba('What', 'Up'))
-print(make_abba('', 'y'))
+# make_abba('Hi', 'Bye') → 'HiByeByeHi'
+# make_abba('Yo', 'Alice') → 'YoAliceAliceYo'
+# make_abba('What', 'Up') → 'WhatUpUpWhat'
+# make_abba('', 'y') → 'yy'
 
 
 # Task 5:
