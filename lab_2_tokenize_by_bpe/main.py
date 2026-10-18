@@ -197,6 +197,48 @@ def train(
     None is returned
     """
 
+    if not isinstance(word_frequencies, dict):
+        return None
+    if not isinstance(num_merges, int) or isinstance(num_merges, bool) or num_merges < 0:
+        return None
+
+    for word, count in word_frequencies.items():
+        if not isinstance(word, tuple):
+            return None
+        if not isinstance(count, int) or isinstance(count, bool):
+            return None
+        for token in word:
+            if not isinstance(token, str):
+                return None
+
+    current_frequencies = dict(word_frequencies)
+
+    for _ in range(num_merges):
+        token_pairs = count_tokens_pairs(current_frequencies)
+        if token_pairs is None:
+            return None
+
+        if not token_pairs:
+            break
+
+        items = list(token_pairs.items())
+
+        def sort_key(item: tuple[tuple[str, str], int]) -> tuple[int, int, str]:
+            pair, count = item
+            merged = pair[0] + pair[1]
+            return (-count, -len(merged), merged)
+
+        items.sort(key=sort_key)
+        best_pair = items[0][0]
+
+        new_frequencies = merge_tokens(current_frequencies, best_pair)
+        if new_frequencies is None:
+            return None
+
+        current_frequencies = new_frequencies
+
+    return current_frequencies
+
 
 def get_vocabulary(
     word_frequencies: dict[tuple[str, ...], int], unknown_token: str
