@@ -223,48 +223,6 @@ def train(
     return word_frequencies
 
 
-    if not isinstance(word_frequencies, dict):
-        return None
-    if not isinstance(num_merges, int) or isinstance(num_merges, bool) or num_merges < 0:
-        return None
-
-    for word, count in word_frequencies.items():
-        if not isinstance(word, tuple):
-            return None
-        if not isinstance(count, int) or isinstance(count, bool):
-            return None
-        for token in word:
-            if not isinstance(token, str):
-                return None
-
-    current_frequencies = dict(word_frequencies)
-
-    for _ in range(num_merges):
-        token_pairs = count_tokens_pairs(current_frequencies)
-        if token_pairs is None:
-            return None
-
-        if not token_pairs:
-            break
-
-        items = list(token_pairs.items())
-
-        def sort_key(item: tuple[tuple[str, str], int]) -> tuple[int, int, str]:
-            pair, count = item
-            merged = pair[0] + pair[1]
-            return (-count, -len(merged), merged)
-
-        items.sort(key=sort_key)
-        best_pair = items[0][0]
-
-        new_frequencies = merge_tokens(current_frequencies, best_pair)
-        if new_frequencies is None:
-            return None
-
-        current_frequencies = new_frequencies
-
-    return current_frequencies
-
 
 def get_vocabulary(
     word_frequencies: dict[tuple[str, ...], int], unknown_token: str
@@ -351,44 +309,6 @@ def decode(
     ]
 
     return "".join(decoded_symbols)
-
-    if not isinstance(encoded_text, (list, tuple)):
-        return None
-    if not isinstance(vocabulary, dict):
-        return None
-    if end_of_word_token is not None and not isinstance(end_of_word_token, str):
-        return None
-
-    if len(encoded_text) == 0 or len(vocabulary) == 0:
-        return None
-
-    for token_id in encoded_text:
-        if not isinstance(token_id, int) or isinstance(token_id, bool):
-            return None
-
-    for token, token_id in vocabulary.items():
-        if not isinstance(token, str):
-            return None
-        if not isinstance(token_id, int) or isinstance(token_id, bool):
-            return None
-
-    reversed_vocab = {}
-    for token, token_id in vocabulary.items():
-        reversed_vocab[token_id] = token
-
-    result_parts = []
-    for token_id in encoded_text:
-        if token_id not in reversed_vocab:
-            return None
-
-        token = reversed_vocab[token_id]
-
-        if end_of_word_token is not None and token == end_of_word_token:
-            result_parts.append(" ")
-        else:
-            result_parts.append(token)
-
-    return "".join(result_parts)
 
 
 def tokenize_word(
